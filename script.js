@@ -9,16 +9,19 @@ var passwordLength = 0;
 
 var generateBtn = document.querySelector("#generate");
 
+
+// Array shuffler I found on w3
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = arr[i];
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
   }
   return arr;
 }
 
+// Random index generator provided in starter code
 function getRand(arr) {
   var randIndex = Math.floor(Math.random() * arr.length);
   var randElement = arr[randIndex];
@@ -66,21 +69,19 @@ function getOptions() {
 function generatePassword() {
   var passwordText = document.querySelector("#password");
   passwordArr = [];
-  password = "";
+
+  // Confirms that there is password criteria given then gets a set of random indexes for the password
   if (possibleChar.length > 0){
     for(var i = 0; i < passwordLength-guaranteedChar.length; i++) {
       passwordArr.push(getRand(possibleChar));
     };
-
-    passwordArr = passwordArr.concat(guaranteedChar);
-
-    password = shuffleArray(passwordArr).join("");
-
-    passwordText.value = password;
   } else {
     alert ("No criteria for password");
     return null
-   };
+  };
+
+  // Combines and shuffles passwordArr and guaranteedChar, then turns that into a string and writes it in the #password text.
+  passwordText.value = shuffleArray(passwordArr.concat(guaranteedChar)).join("");
 }
 
 // Add event listener to generate button
