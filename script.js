@@ -34,10 +34,7 @@ function getOptions() {
   guaranteedChar = [];
 
   // Asking for length
-  passwordLength = parseInt(
-    prompt("How many characters would you like your password to contain?"),
-    10
-    );
+  passwordLength = parseInt(prompt("How many characters would you like your password to contain?"));
 
   // Checks that password length is valid
   if (Number.isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
